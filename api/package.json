@@ -1,11 +1,11 @@
 {
   "name": "imgflip-api",
   "version": "1.0.0",
-  "description": "TestsImgflip api\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D s ImgFlip api",
+  "description": "Tests Imgflip api",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "schesa",
   "license": "ISC",
