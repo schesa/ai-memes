@@ -11,8 +11,8 @@ axios
         template_id: 14859329,
         username: process.env.IMGFLIP_USERNAME,
         password: process.env.IMGFLIP_PASSWORD,
-        text0: "Cand ai o pitica",
-        text1: "Dar nu te lasa in pace....",
+        text0: "when the api",
+        text1: "has parameters in post",
       },
     }
   )
