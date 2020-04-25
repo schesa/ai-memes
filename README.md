@@ -6,6 +6,7 @@ Work In Progress...
 
 To run
 > cd ./api
+
 > npm start
 
 Call examples found in /api/src/index.js
