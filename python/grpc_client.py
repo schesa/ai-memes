@@ -14,7 +14,7 @@ def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = memegenerator_pb2_grpc.GreeterStub(channel)
         response = stub.GetMemeUrl(
-            memegenerator_pb2.MemeRequest(caption='meme|caption'))
+            memegenerator_pb2.MemeRequest(caption='when implementing grpc|is hard'))
     print("Greeter client received url: " + response.url)
 
 
