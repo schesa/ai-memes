@@ -30,12 +30,15 @@ axios
     {},
     {
       params: {
-        template_id: 112126428, // distacted boyfriend meme
+        // template_id: 102156234, // distacted boyfriend meme
+        template_id: 405658, // grumpy cat meme
         username: process.env.IMGFLIP_USERNAME,
         password: process.env.IMGFLIP_PASSWORD,
-        "boxes[0][text]": "Making memes using Ai",
-        "boxes[1][text]": "9GAG Users",
-        "boxes[2][text]": "Making memes",
+        "boxes[0][text]": "when life gives you lemons",
+        "boxes[1][text]": "throw them at people",
+        // "boxes[2][text]": "Making memes",
+        // to consider feature
+        // boxes[1][force_caps]: 0,
       },
     }
   )
