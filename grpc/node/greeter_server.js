@@ -37,12 +37,22 @@ function sayHello(call, callback) {
 }
 
 /**
+ * Implements the SayHello RPC method.
+ */
+function sayHelloAgain(call, callback) {
+  callback(null, { message: "Hello again dude " + call.request.name });
+}
+
+/**
  * Starts an RPC server that receives requests for the Greeter service at the
  * sample server port
  */
 function main() {
   var server = new grpc.Server();
-  server.addService(hello_proto.Greeter.service, { sayHello: sayHello });
+  server.addService(hello_proto.Greeter.service, {
+    sayHello: sayHello,
+    sayHelloAgain: sayHelloAgain,
+  });
   server.bind("0.0.0.0:50051", grpc.ServerCredentials.createInsecure());
   server.start();
 }
