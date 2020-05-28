@@ -43,6 +43,12 @@ function sayHelloAgain(call, callback) {
   callback(null, { message: "Hello again dude " + call.request.name });
 }
 
+function getMemeUrl(call, callback) {
+  console.log(call);
+  console.log(call.request.caption);
+  callback(null, { url: "www.google.com" });
+}
+
 /**
  * Starts an RPC server that receives requests for the Greeter service at the
  * sample server port
@@ -50,8 +56,7 @@ function sayHelloAgain(call, callback) {
 function main() {
   var server = new grpc.Server();
   server.addService(hello_proto.Greeter.service, {
-    sayHello: sayHello,
-    sayHelloAgain: sayHelloAgain,
+    getMemeUrl: getMemeUrl,
   });
   server.bind("0.0.0.0:50051", grpc.ServerCredentials.createInsecure());
   server.start();

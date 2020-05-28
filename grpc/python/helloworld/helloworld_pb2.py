@@ -18,21 +18,21 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='helloworld',
   syntax='proto3',
   serialized_options=b'\n\033io.grpc.examples.helloworldB\017HelloWorldProtoP\001\242\002\003HLW',
-  serialized_pb=b'\n\x10helloworld.proto\x12\nhelloworld\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2\x8e\x01\n\x07Greeter\x12>\n\x08SayHello\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x12\x43\n\rSayHelloAgain\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3'
+  serialized_pb=b'\n\x10helloworld.proto\x12\nhelloworld\"\x1e\n\x0bMemeRequest\x12\x0f\n\x07\x63\x61ption\x18\x01 \x01(\t\"\x18\n\tMemeReply\x12\x0b\n\x03url\x18\x01 \x01(\t2I\n\x07Greeter\x12>\n\nGetMemeUrl\x12\x17.helloworld.MemeRequest\x1a\x15.helloworld.MemeReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3'
 )
 
 
 
 
-_HELLOREQUEST = _descriptor.Descriptor(
-  name='HelloRequest',
-  full_name='helloworld.HelloRequest',
+_MEMEREQUEST = _descriptor.Descriptor(
+  name='MemeRequest',
+  full_name='helloworld.MemeRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='helloworld.HelloRequest.name', index=0,
+      name='caption', full_name='helloworld.MemeRequest.caption', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -51,19 +51,19 @@ _HELLOREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=32,
-  serialized_end=60,
+  serialized_end=62,
 )
 
 
-_HELLOREPLY = _descriptor.Descriptor(
-  name='HelloReply',
-  full_name='helloworld.HelloReply',
+_MEMEREPLY = _descriptor.Descriptor(
+  name='MemeReply',
+  full_name='helloworld.MemeReply',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='helloworld.HelloReply.message', index=0,
+      name='url', full_name='helloworld.MemeReply.url', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -81,27 +81,27 @@ _HELLOREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=62,
-  serialized_end=91,
+  serialized_start=64,
+  serialized_end=88,
 )
 
-DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
-DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
+DESCRIPTOR.message_types_by_name['MemeRequest'] = _MEMEREQUEST
+DESCRIPTOR.message_types_by_name['MemeReply'] = _MEMEREPLY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), {
-  'DESCRIPTOR' : _HELLOREQUEST,
+MemeRequest = _reflection.GeneratedProtocolMessageType('MemeRequest', (_message.Message,), {
+  'DESCRIPTOR' : _MEMEREQUEST,
   '__module__' : 'helloworld_pb2'
-  # @@protoc_insertion_point(class_scope:helloworld.HelloRequest)
+  # @@protoc_insertion_point(class_scope:helloworld.MemeRequest)
   })
-_sym_db.RegisterMessage(HelloRequest)
+_sym_db.RegisterMessage(MemeRequest)
 
-HelloReply = _reflection.GeneratedProtocolMessageType('HelloReply', (_message.Message,), {
-  'DESCRIPTOR' : _HELLOREPLY,
+MemeReply = _reflection.GeneratedProtocolMessageType('MemeReply', (_message.Message,), {
+  'DESCRIPTOR' : _MEMEREPLY,
   '__module__' : 'helloworld_pb2'
-  # @@protoc_insertion_point(class_scope:helloworld.HelloReply)
+  # @@protoc_insertion_point(class_scope:helloworld.MemeReply)
   })
-_sym_db.RegisterMessage(HelloReply)
+_sym_db.RegisterMessage(MemeReply)
 
 
 DESCRIPTOR._options = None
@@ -112,25 +112,16 @@ _GREETER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=94,
-  serialized_end=236,
+  serialized_start=90,
+  serialized_end=163,
   methods=[
   _descriptor.MethodDescriptor(
-    name='SayHello',
-    full_name='helloworld.Greeter.SayHello',
+    name='GetMemeUrl',
+    full_name='helloworld.Greeter.GetMemeUrl',
     index=0,
     containing_service=None,
-    input_type=_HELLOREQUEST,
-    output_type=_HELLOREPLY,
-    serialized_options=None,
-  ),
-  _descriptor.MethodDescriptor(
-    name='SayHelloAgain',
-    full_name='helloworld.Greeter.SayHelloAgain',
-    index=1,
-    containing_service=None,
-    input_type=_HELLOREQUEST,
-    output_type=_HELLOREPLY,
+    input_type=_MEMEREQUEST,
+    output_type=_MEMEREPLY,
     serialized_options=None,
   ),
 ])

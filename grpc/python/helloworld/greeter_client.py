@@ -28,9 +28,9 @@ def run():
     # of the code.
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = helloworld_pb2_grpc.GreeterStub(channel)
-        response = stub.SayHelloAgain(
-            helloworld_pb2.HelloRequest(name='Django'))
-    print("Greeter client received: " + response.message)
+        response = stub.GetMemeUrl(
+            helloworld_pb2.MemeRequest(caption='meme|caption'))
+    print("Greeter client received url: " + response.url)
 
 
 if __name__ == '__main__':
