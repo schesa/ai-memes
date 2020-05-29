@@ -6,13 +6,11 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "50051:50051"
-#   python:
-#     build:
-#       context: ./client
-#       dockerfile: ./Dockerfile
-#     ports:
-#       - "3000:3000"
-#     volumes:
-#       - ./client:/usr/src/client
-#     links:
-#       - backend
+  python:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend:/app

@@ -1,0 +1,55 @@
+# define MEME fields fragment
+fragment fields on MemeType {
+  id
+  caption
+  url
+  created
+  templateid
+  templatename
+}
+
+# Get ALL MEMES
+query getAllMemes {
+  allMemes {
+    ...fields
+  }
+}
+
+# Get MEME by ID
+query getMemeById($id: Int = 2) {
+  meme(id: $id) {
+    ...fields
+  }
+}
+
+# Get MEME by TEXT
+{
+  meme(caption: "meme|caption") {
+    ...fields
+  }
+}
+
+# ADD meme
+mutation AddMeme {
+  addMeme(meme: { caption: "new|caption" }) {
+    meme {
+      ...fields
+    }
+  }
+}
+
+# EDIT MEME
+mutation EditMeme {
+  editMeme(id: 1, templateid: "102156234") {
+    meme {
+      ...fields
+    }
+  }
+}
+
+# DELETE Meme
+mutation {
+  deleteMeme(id: 3) {
+    ok
+  }
+}
