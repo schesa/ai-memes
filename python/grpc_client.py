@@ -12,10 +12,11 @@ def run():
     # used in circumstances in which the with statement does not fit the needs
     # of the code.
     with grpc.insecure_channel('localhost:50051') as channel:
-        stub = memegenerator_pb2_grpc.GreeterStub(channel)
+        stub = memegenerator_pb2_grpc.MemerStub(channel)
         response = stub.GetMemeUrl(
-            memegenerator_pb2.MemeRequest(caption='when implementing grpc|is hard'))
-    print("Greeter client received url: " + response.url)
+            memegenerator_pb2.MemeRequest(
+                caption='when implementing grpc|is hard', memeid="102156234"))
+    print("Memer client received url: " + response.url)
 
 
 if __name__ == '__main__':

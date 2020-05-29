@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='aimemes',
   syntax='proto3',
   serialized_options=b'\242\002\003HLW',
-  serialized_pb=b'\n\x13memegenerator.proto\x12\x07\x61imemes\"\x1e\n\x0bMemeRequest\x12\x0f\n\x07\x63\x61ption\x18\x01 \x01(\t\"\x18\n\tMemeReply\x12\x0b\n\x03url\x18\x01 \x01(\t2C\n\x07Greeter\x12\x38\n\nGetMemeUrl\x12\x14.aimemes.MemeRequest\x1a\x12.aimemes.MemeReply\"\x00\x42\x06\xa2\x02\x03HLWb\x06proto3'
+  serialized_pb=b'\n\x13memegenerator.proto\x12\x07\x61imemes\".\n\x0bMemeRequest\x12\x0f\n\x07\x63\x61ption\x18\x01 \x01(\t\x12\x0e\n\x06memeid\x18\x02 \x01(\t\"\x18\n\tMemeReply\x12\x0b\n\x03url\x18\x01 \x01(\t2A\n\x05Memer\x12\x38\n\nGetMemeUrl\x12\x14.aimemes.MemeRequest\x1a\x12.aimemes.MemeReply\"\x00\x42\x06\xa2\x02\x03HLWb\x06proto3'
 )
 
 
@@ -38,6 +38,13 @@ _MEMEREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='memeid', full_name='aimemes.MemeRequest.memeid', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -51,7 +58,7 @@ _MEMEREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=32,
-  serialized_end=62,
+  serialized_end=78,
 )
 
 
@@ -81,8 +88,8 @@ _MEMEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=64,
-  serialized_end=88,
+  serialized_start=80,
+  serialized_end=104,
 )
 
 DESCRIPTOR.message_types_by_name['MemeRequest'] = _MEMEREQUEST
@@ -106,18 +113,18 @@ _sym_db.RegisterMessage(MemeReply)
 
 DESCRIPTOR._options = None
 
-_GREETER = _descriptor.ServiceDescriptor(
-  name='Greeter',
-  full_name='aimemes.Greeter',
+_MEMER = _descriptor.ServiceDescriptor(
+  name='Memer',
+  full_name='aimemes.Memer',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=90,
-  serialized_end=157,
+  serialized_start=106,
+  serialized_end=171,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetMemeUrl',
-    full_name='aimemes.Greeter.GetMemeUrl',
+    full_name='aimemes.Memer.GetMemeUrl',
     index=0,
     containing_service=None,
     input_type=_MEMEREQUEST,
@@ -125,8 +132,8 @@ _GREETER = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
 ])
-_sym_db.RegisterServiceDescriptor(_GREETER)
+_sym_db.RegisterServiceDescriptor(_MEMER)
 
-DESCRIPTOR.services_by_name['Greeter'] = _GREETER
+DESCRIPTOR.services_by_name['Memer'] = _MEMER
 
 # @@protoc_insertion_point(module_scope)

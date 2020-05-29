@@ -4,7 +4,7 @@ import grpc
 import memegenerator_pb2 as memegenerator__pb2
 
 
-class GreeterStub(object):
+class MemerStub(object):
     """Missing associated documentation comment in .proto file"""
 
     def __init__(self, channel):
@@ -14,13 +14,13 @@ class GreeterStub(object):
             channel: A grpc.Channel.
         """
         self.GetMemeUrl = channel.unary_unary(
-                '/aimemes.Greeter/GetMemeUrl',
+                '/aimemes.Memer/GetMemeUrl',
                 request_serializer=memegenerator__pb2.MemeRequest.SerializeToString,
                 response_deserializer=memegenerator__pb2.MemeReply.FromString,
                 )
 
 
-class GreeterServicer(object):
+class MemerServicer(object):
     """Missing associated documentation comment in .proto file"""
 
     def GetMemeUrl(self, request, context):
@@ -30,7 +30,7 @@ class GreeterServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_GreeterServicer_to_server(servicer, server):
+def add_MemerServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetMemeUrl': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMemeUrl,
@@ -39,12 +39,12 @@ def add_GreeterServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'aimemes.Greeter', rpc_method_handlers)
+            'aimemes.Memer', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class Greeter(object):
+class Memer(object):
     """Missing associated documentation comment in .proto file"""
 
     @staticmethod
@@ -57,7 +57,7 @@ class Greeter(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/aimemes.Greeter/GetMemeUrl',
+        return grpc.experimental.unary_unary(request, target, '/aimemes.Memer/GetMemeUrl',
             memegenerator__pb2.MemeRequest.SerializeToString,
             memegenerator__pb2.MemeReply.FromString,
             options, channel_credentials,
