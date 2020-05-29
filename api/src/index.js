@@ -3,7 +3,7 @@ var grpc = require("grpc");
 var protoLoader = require("@grpc/proto-loader");
 require("dotenv").config();
 
-var PROTO_PATH = __dirname + "/../../memegenerator.proto";
+var PROTO_PATH = __dirname + "/../memegenerator.proto";
 var packageDefinition = protoLoader.loadSync(PROTO_PATH, {
   keepCase: true,
   longs: String,

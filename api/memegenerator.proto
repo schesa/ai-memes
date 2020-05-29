@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option objc_class_prefix = "HLW";
+
+package aimemes;
+
+service Memer {
+  rpc GetMemeUrl (MemeRequest) returns (MemeReply) {}
+}
+
+message MemeRequest {
+  string caption = 1;
+  string memeid = 2;
+}
+
+message MemeReply {
+  string url = 1;
+}
