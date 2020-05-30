@@ -14,7 +14,8 @@ class Client:
     conn = None
 
     def get_url(self, caption, id):
-        with grpc.insecure_channel('localhost:50051') as channel:
+        # with grpc.insecure_channel('localhost:50051') as channel:
+        with grpc.insecure_channel('api:50051') as channel:
             stub = memegenerator_pb2_grpc.MemerStub(channel)
             response = stub.GetMemeUrl(
 
@@ -41,8 +42,13 @@ class Client:
         :param conn: the Connection object
         :return:
         """
+        # cur = self.conn.cursor()
+        # cur.execute("SELECT * FROM sqlite_master")
+        # rows = cur.fetchall()
+        # for row in rows:
+        #     print(row)
         cur = self.conn.cursor()
-        cur.execute("SELECT id,templateid,caption FROM memes_meme WHERE url=''")
+        cur.execute("SELECT id,templateid,caption FROM memes_meme WHERE url='' and templateid!=''")
         rows = cur.fetchall()
         return rows
 
@@ -60,21 +66,25 @@ class Client:
 
     def run(self):
         try:
+            # print("sleep")
+            # time.sleep(10)
+            # print("wake")
             logging.basicConfig()
-            self.create_connection("../backend/db.sqlite3")
+            self.create_connection("./db.sqlite3")
             while True:
+                print("start loop")
                 rows = self.select_all_memes()
                 print(self.conn)
-                for row in rows:
-                    print(
-                        f'Updating row id {row[0]} templateid {row[1]} caption {row[2]}')
+                print(rows)
                 ids_urls = [(self.get_url(row[2], row[1]), row[0])
                             for row in rows]
+                print(ids_urls)
                 for id_url in ids_urls:
                     self.update_meme(id_url)
                 # get_url('when implementing grpc|is hard', "102156234")
                 time.sleep(10)
         except Error as e:
+            print('Error')
             print(e)
         finally:
             try:  # double try block for Keyboard intrerrupt
@@ -86,5 +96,6 @@ class Client:
 
 
 if __name__ == '__main__':
+    print("main")
     client = Client()
     client.run()

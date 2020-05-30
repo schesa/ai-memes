@@ -10,6 +10,6 @@ RUN mkdir /app
 ADD . /app
 WORKDIR /app
 
-RUN python manage.py migrate
+# RUN python manage.py migrate
 
 CMD ["python", "manage.py", "runserver", "0:8080"]

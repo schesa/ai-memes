@@ -2,12 +2,11 @@ FROM node:14.3.0
 
 WORKDIR /app
 COPY package.json /app
-RUN npm install
+RUN npm install && npm audit fix
 COPY . /app
 
-RUN npm install
 
-CMD node ./src/index.js
+CMD ["node", "./src/index.js"]
 
 # grpc channel
 EXPOSE 50051

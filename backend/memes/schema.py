@@ -1,6 +1,5 @@
 import datetime
 from memes.models import Meme
-from memes.grpc_client import get_url
 import graphene
 from graphene import ObjectType
 from graphene_django.types import DjangoObjectType
@@ -35,9 +34,7 @@ class Query(graphene.ObjectType):
 class AddMemeInput(graphene.InputObjectType):
     caption = graphene.String()
     templateid = graphene.String()
-    #  = graphene.String()
-    # dueDate = graphene.String()
-    # completed = graphene.Boolean()
+    templatename = graphene.String()
 
 
 class AddMemeMutation(graphene.Mutation):
@@ -50,7 +47,8 @@ class AddMemeMutation(graphene.Mutation):
         new_meme = Meme.objects.create(
             caption=meme.caption,
             templateid=meme.templateid,
-            url=get_url(meme.caption, meme.templateid)
+            templatename=meme.templatename,
+
         )
         return AddMemeMutation(meme=new_meme)
 
@@ -60,14 +58,18 @@ class MemeMutation(graphene.Mutation):
         id = graphene.Int(required=True)
         caption = graphene.String()
         templateid = graphene.String()
+        templatename = graphene.String()
+
     meme = graphene.Field(MemeType)
 
-    def mutate(self, info, id, caption=None, templateid=None):
+    def mutate(self, info, id, caption=None, templateid=None, templatename=None):
         meme = Meme.objects.get(pk=id)
         if caption is not None:
             meme.caption = caption
         if templateid is not None:
             meme.templateid = templateid
+        if templatename is not None:
+            meme.templatename = templatename
         meme.save()
         return MemeMutation(meme=meme)
 

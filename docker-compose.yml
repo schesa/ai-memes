@@ -1,4 +1,4 @@
-version: "2.1"
+version: "3.2"
 services:
   api:
     build:
@@ -6,7 +6,9 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - "50051:50051"
-  python:
+    networks:
+      - mynet
+  backend:
     build:
       context: ./backend
       dockerfile: ./Dockerfile
@@ -14,3 +16,22 @@ services:
       - "8080:8080"
     volumes:
       - ./backend:/app
+    networks:
+      - mynet
+  grpc-client:
+    build:
+      context: ./grpc_client
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./grpc_client:/app
+      - ./backend/db.sqlite3:/app/db.sqlite3
+    depends_on:
+      - api
+      - backend
+    networks:
+      - mynet
+
+networks:
+  mynet:
+
+
