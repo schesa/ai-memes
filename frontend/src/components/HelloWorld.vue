@@ -1,42 +1,63 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <div v-for="meme in allMemes" :key="meme.id">
+      <h1>{{meme.caption.split('|').join(", ")}}</h1>
+      <img :src="meme.url" :alt="meme.caption" />
+    </div>
+    <input type="text" v-model="memeCaption" />
+    <input type="text" v-model="memeTemplate" />
+    <button @click="onClicked">Add meme</button>
   </div>
 </template>
 
 <script>
+import gql from "graphql-tag";
+
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
+  methods: {
+    async onClicked() {
+      console.log(this.memeCaption);
+      console.log(this.memeTemplate);
+      const result = await this.$apollo.mutate({
+        mutation: gql`
+          mutation AddMeme($caption: String!, $templateid: String!) {
+            addMeme(meme: { caption: $caption, templateid: $templateid }) {
+              meme {
+                id
+              }
+            }
+          }
+        `,
+        // Parameters
+        variables: {
+          templateid: this.memeTemplate,
+          caption: this.memeCaption
+        }
+      });
+    }
+  },
+  data() {
+    return { memeCaption: "", memeTemplate: "" };
+  },
+  apollo: {
+    allMemes: gql`
+      query allMemes {
+        allMemes {
+          id
+          caption
+          url
+          created
+          templateid
+          templatename
+        }
+      }
+    `
+  },
   props: {
-    msg: String
+    // msg: String
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -56,3 +77,4 @@ a {
   color: #42b983;
 }
 </style>
+

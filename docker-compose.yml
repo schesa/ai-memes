@@ -18,16 +18,18 @@ services:
       - ./backend:/app
     networks:
       - generalnet
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: ./Dockerfile
-    ports:
-      - "8080:8080"
-    # volumes:
-    #   - ./frontend:/app
-    networks:
-      - generalnet
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: ./Dockerfile
+  #   ports:
+  #     - "8080:8080"
+  #   # volumes:
+  #   #   - ./frontend:/app
+  #   networks:
+  #     - generalnet
+  #   depends_on:
+  #     - backend
   grpc-client:
     build:
       context: ./grpc_client
@@ -43,5 +45,3 @@ services:
 
 networks:
   generalnet:
-
-

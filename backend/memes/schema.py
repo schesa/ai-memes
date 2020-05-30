@@ -33,8 +33,7 @@ class Query(graphene.ObjectType):
 
 class AddMemeInput(graphene.InputObjectType):
     caption = graphene.String()
-    templateid = graphene.String()
-    templatename = graphene.String()
+    templateid = graphene.String(required=False)
 
 
 class AddMemeMutation(graphene.Mutation):
@@ -47,8 +46,6 @@ class AddMemeMutation(graphene.Mutation):
         new_meme = Meme.objects.create(
             caption=meme.caption,
             templateid=meme.templateid,
-            templatename=meme.templatename,
-
         )
         return AddMemeMutation(meme=new_meme)
 
