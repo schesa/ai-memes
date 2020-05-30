@@ -7,17 +7,27 @@ services:
     ports:
       - "50051:50051"
     networks:
-      - mynet
+      - generalnet
   backend:
     build:
       context: ./backend
       dockerfile: ./Dockerfile
     ports:
-      - "8080:8080"
+      - "8000:8080"
     volumes:
       - ./backend:/app
     networks:
-      - mynet
+      - generalnet
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    # volumes:
+    #   - ./frontend:/app
+    networks:
+      - generalnet
   grpc-client:
     build:
       context: ./grpc_client
@@ -29,9 +39,9 @@ services:
       - api
       - backend
     networks:
-      - mynet
+      - generalnet
 
 networks:
-  mynet:
+  generalnet:
 
 

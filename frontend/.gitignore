@@ -1,7 +1,6 @@
-api/.env
-api/node_modules
-frontend/node_modules
-*.pyc
+.DS_Store
+node_modules
+/dist
 
 # local env files
 .env.local
