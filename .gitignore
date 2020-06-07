@@ -1,4 +1,10 @@
+ # dataset
+net/data/*
+# virtual environments
+*/env/*
+# imgflip user and pass
 api/.env
+
 api/node_modules
 frontend/node_modules
 *.pyc
