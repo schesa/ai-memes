@@ -1,12 +1,61 @@
 <template>
   <div class="hello">
-    <div v-for="meme in allMemes" :key="meme.id">
-      <h1>{{meme.caption.split('|').join(", ")}}</h1>
-      <img :src="meme.url" :alt="meme.caption" />
-    </div>
+    <!-- <md-field>
+      <label>Meme Caption</label>
+      <md-input v-model="memeCaption"></md-input>
+    </md-field>
+    <md-field>
+      <label>Meme Template</label>
+      <md-input v-model="memeTemplate"></md-input>
+    </md-field>
+    <md-button class="md-raised  md-primary" @click="onClicked">Add meme</md-button>
     <input type="text" v-model="memeCaption" />
-    <input type="text" v-model="memeTemplate" />
-    <button @click="onClicked">Add meme</button>
+    <input type="text" v-model="memeTemplate" /> -->
+
+    
+    <div class="top md-layout md-gutter md-alignment-center-space-around">
+
+      <form novalidate class="md-layout-item md-size-40" @submit.prevent="onClicked">
+        <md-card>
+            <md-card-header>
+                <div class="md-title">Create your meme</div>
+            </md-card-header>
+        <md-card-content>
+          <md-field>
+            <label>Meme Caption</label>
+            <md-input v-model="memeCaption"></md-input>
+          </md-field>
+          <md-field>
+            <label>Template ID</label>
+            <md-input v-model="memeTemplate"></md-input>
+          </md-field>
+        </md-card-content>
+            <md-card-actions>
+                <md-button type="submit" class="md-primary" :disabled="sending">Add</md-button>
+            </md-card-actions>
+        </md-card>
+      </form>
+
+      <div class="md-layout-item md-size-50">
+            <md-button class="md-raised md-accent">Generate meme using AI</md-button>
+            <div v-if="loading">
+              <md-progress-spinner class="md-accent" md-mode="indeterminate" />
+            </div>
+      </div>
+    </div>
+<div class="md-inset">
+</div>
+    <div class="md-layout md-gutter md-alignment-top-space-around">
+      <md-card class="meme md-layout-item md-size-15" v-for="meme in allMemes.filter(meme=>meme.caption!=='')" :key="meme.id">
+        <md-card-media>
+          <img :src="meme.url" :alt="meme.caption+meme.templateid" />
+        </md-card-media>
+
+        <md-card-content>
+          {{meme.caption.split('|').join("\n")}}
+        </md-card-content>
+      </md-card>
+    </div>
   </div>
 </template>
 
@@ -19,6 +68,7 @@ export default {
     async onClicked() {
       console.log(this.memeCaption);
       console.log(this.memeTemplate);
+      this.loading = true;
       const result = await this.$apollo.mutate({
         mutation: gql`
           mutation AddMeme($caption: String!, $templateid: String!) {
@@ -35,10 +85,13 @@ export default {
           caption: this.memeCaption
         }
       });
+      this.loading = false;
+      console.log('result')
+      console.log(result)
     }
   },
   data() {
-    return { memeCaption: "", memeTemplate: "" };
+    return { memeCaption: "", memeTemplate: "", loading: false };
   },
   apollo: {
     allMemes: gql`
@@ -75,6 +128,9 @@ li {
 }
 a {
   color: #42b983;
+}
+.top{
+  padding: 5em;
 }
 </style>
 
