@@ -12,8 +12,7 @@
     <input type="text" v-model="memeCaption" />
     <input type="text" v-model="memeTemplate" /> -->
 
-    
-    <div class="top md-layout md-gutter md-alignment-center-space-around">
+    <div class="top md-layout md-gutter md-alignment-center-space-between">
 
       <form novalidate class="md-layout-item md-size-40" @submit.prevent="onClicked">
         <md-card>
@@ -35,12 +34,15 @@
             </md-card-actions>
         </md-card>
       </form>
+      <div v-if="loading_general" class="md-layout-item md-size-10">
+              <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_gwBIWJ.json" mode="bounce" background="transparent"  speed="0.7"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>            
+      </div>
 
-      <div class="md-layout-item md-size-50">
+      <div class="md-layout-item md-size-40">
             <md-button @click="onGenerate" class="md-raised md-accent">Generate meme using AI</md-button>
-            <div v-if="loading_general">
-              <md-progress-spinner class="md-accent" md-mode="indeterminate" />
-            </div>
+            <!-- <div v-if="loading_general">
+              <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_gwBIWJ.json" mode="bounce" background="transparent"  speed="0.7"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>            
+            </div> -->
       </div>
     </div>
 <div class="md-inset">
@@ -49,8 +51,11 @@
       <md-card class="meme md-layout-item md-size-15" v-for="meme in allMemes.filter(meme=> (meme.caption != '' && meme.caption !== null) )" :key="meme.id">
         <md-card-media>
           <div v-if="loading_general">
-            <md-progress-spinner class="md-primary" md-mode="indeterminate" />
+            <!-- <md-progress-spinner class="md-primary" md-mode="indeterminate" /> -->
+            <!-- <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_7CAQeC.json"  background="transparent"  speed="0.7"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player> -->
+            <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_7CAQeC.json"  background="transparent"  speed="0.7"  style="width: 280px; height: 180px;"  loop  autoplay></lottie-player>
           </div>
+          
           <div v-else>
             <clazy-load :src="meme.url">
               <img :src="meme.url">
@@ -74,7 +79,7 @@
 import gql from "graphql-tag";
 
 export default {
-  name: "HelloWorld",
+  name: "Root",
   methods: {
     async onClicked() {
       console.log(this.memeCaption);
@@ -115,7 +120,7 @@ export default {
           `,
           // Parameters
           variables: {
-            templateid: 101716,
+            templateid: 61546,
           }
         });
         console.log('result')
@@ -134,18 +139,23 @@ export default {
         //  }, 10000);
 
         // repeat with the interval of 2 seconds
-        let timerId = setInterval(() => {
-          that.$apollo.queries.allMemes.refetch();
-          that.loading = !that.loading;
-        }, 1000);
+        // let timerId = setInterval(() => {
+        //   // that.$apollo.queries.allMemes.refetch();
+        //   // that.loading = !that.loading;
+        // }, 1000);
 
         // after 5 seconds stop
-        setTimeout(() => { clearInterval(timerId); that.loading=false; that.loading_general=false; }, 10000);
+        setTimeout(() => { that.$apollo.queries.allMemes.refetch(); that.loading=false; that.loading_general=false; }, 13000);
     }
   },
   data() {
     return { memeCaption: "", memeTemplate: "", loading: false, loading_general: false };
   },
+  // created() {
+  //   let ckeditor = document.createElement('script');   
+  //   ckeditor.setAttribute('src',"https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js");
+  //   document.head.appendChild(ckeditor);
+  // },
   apollo: {
     allMemes: gql`
       query allMemes {

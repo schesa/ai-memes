@@ -1,17 +1,18 @@
 <template>
   <div id="app">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons">
-    <HelloWorld/>
+    
+    <Root/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Root from './components/Root.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Root
   }
 }
 </script>
