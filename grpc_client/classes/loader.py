@@ -51,8 +51,8 @@ class Loader():
 
         # generate lookup
         memes_path = os.path.join(self.root_path, 'ImgFlip500K_Dataset', 'memes')
-        # self.load_memes(memes_path)
-        self.load_memes(memes_path, 0, 1)
+        self.load_memes(memes_path)
+        # self.load_memes(memes_path, 0, 1)
 
         self.load_lex()
 
