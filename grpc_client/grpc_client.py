@@ -8,19 +8,19 @@ import memegenerator_pb2_grpc
 import sqlite3
 from sqlite3 import Error
 import time
-
+from classes.predictor import Predictor
 
 class Client:
     conn = None
 
-    def get_url(self, caption, id):
+    def get_url(self, caption, templateid):
         # with grpc.insecure_channel('localhost:50051') as channel:
         with grpc.insecure_channel('api:50051') as channel:
             stub = memegenerator_pb2_grpc.MemerStub(channel)
             response = stub.GetMemeUrl(
 
                 memegenerator_pb2.MemeRequest(
-                    caption=caption, memeid=id))
+                    caption=caption, memeid=templateid))
         print("Memer client received url: " + response.url)
         return response.url
 
@@ -36,7 +36,7 @@ class Client:
         except Error as e:
             print(e)
 
-    def select_all_memes(self):
+    def select_memes_for_imgflip(self):
         """
         Query all rows in the tasks table
         :param conn: the Connection object
@@ -48,14 +48,14 @@ class Client:
         # for row in rows:
         #     print(row)
         cur = self.conn.cursor()
-        cur.execute("SELECT id,templateid,caption FROM memes_meme WHERE url='' and templateid!=''")
+        cur.execute("SELECT id,templateid,caption FROM memes_meme WHERE url is null and templateid is not null and caption is not null")
         rows = cur.fetchall()
         return rows
 
-    def update_meme(self, id_url):
+    def update_meme_url(self, id_url):
         """
         :param id_url:
-        :return: project id
+        :return: id
         """
         sql = ''' UPDATE memes_meme
                 SET url = ?
@@ -64,24 +64,65 @@ class Client:
         cur.execute(sql, id_url)
         self.conn.commit()
 
-    def run(self):
+    def update_memes_url(self, rows):
+        print(rows)
+        ids_urls = [(self.get_url(row[2], row[1]), row[0])
+                    for row in rows]
+        # get_url('when implementing grpc|is hard', "102156234")
+        print(ids_urls)
+        for id_url in ids_urls:
+            self.update_meme_url(id_url)
+
+    def select_memes_for_caption(self):
+        """
+        Query all rows in the tasks table
+        :param conn: the Connection object
+        :return:
+        """
+        cur = self.conn.cursor()
+        cur.execute("SELECT id,templateid,caption FROM memes_meme WHERE url is null and templateid is not null and caption is null")
+        rows = cur.fetchall()
+        return rows
+
+    def update_meme_caption(self, caption, url, id):
+        """
+        :param caption, url, id:
+        :return: id
+        """
+        sql = ''' UPDATE memes_meme
+                SET caption = ?,
+                url = ?
+                WHERE id = ?'''
+        cur = self.conn.cursor()
+        print(f'caption:{caption}, url:{url}, id:{id}')
+        cur.execute(sql, (caption, url, id))
+        self.conn.commit()
+
+    def update_memes_caption(self, rows, predictor):
+        for row in rows: # id, templateid, caption 
+            print(f'Generate caption for meme {row[0]}')
+            caption = predictor.predict(row[1])
+            print(f'Prediction {caption}')
+            url = self.get_url(caption, row[1])
+            id = row[0]
+            self.update_meme_caption(caption, url, id)
+
+    def run(self, predictor):
         try:
-            # print("sleep")
-            # time.sleep(10)
-            # print("wake")
+            print('Enabling db connection')
             logging.basicConfig()
             self.create_connection("./db.sqlite3")
             while True:
-                print("start loop")
-                rows = self.select_all_memes()
+                print('Enter loop')
                 print(self.conn)
-                print(rows)
-                ids_urls = [(self.get_url(row[2], row[1]), row[0])
-                            for row in rows]
-                print(ids_urls)
-                for id_url in ids_urls:
-                    self.update_meme(id_url)
-                # get_url('when implementing grpc|is hard', "102156234")
+
+                rows = self.select_memes_for_imgflip()
+                self.update_memes_url(rows)
+
+                if predictor is not None:
+                    rows = self.select_memes_for_caption()
+                    self.update_memes_caption(rows, predictor)
+
                 time.sleep(10)
         except Error as e:
             print('Error')
@@ -96,6 +137,10 @@ class Client:
 
 
 if __name__ == '__main__':
-    print("main")
+    print('Loading predictor')
+    predictor = Predictor()
+    # predictor.generateCaptions()
+    print('Predictor loaded')
     client = Client()
-    client.run()
+    print('Predictor created')
+    client.run(predictor)

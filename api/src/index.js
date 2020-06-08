@@ -85,8 +85,8 @@ const getUrlForCaption = async (memeid, caption, callback) => {
     template_id: memeid,
     username: process.env.IMGFLIP_USERNAME,
     password: process.env.IMGFLIP_PASSWORD,
-    "boxes[0][text]": "when life gives you lemons",
-    "boxes[1][text]": "throw them at people",
+    // "boxes[0][text]": "when life gives you lemons",
+    // "boxes[1][text]": "throw them at people",
     // "boxes[2][text]": "Making memes",
     // to consider feature
     // boxes[1][force_caps]: 0,

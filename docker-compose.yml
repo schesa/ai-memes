@@ -37,11 +37,14 @@ services:
     volumes:
       - ./grpc_client:/app
       - ./backend/db.sqlite3:/app/db.sqlite3
+      - ./net/data:/app/data
     depends_on:
       - api
       - backend
     networks:
       - generalnet
+    environment:
+      - PYTHONUNBUFFERED=1
 
 networks:
   generalnet:

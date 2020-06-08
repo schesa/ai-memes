@@ -3,6 +3,7 @@ from memes.models import Meme
 import graphene
 from graphene import ObjectType
 from graphene_django.types import DjangoObjectType
+import logging
 
 
 class MemeType(DjangoObjectType):
@@ -32,7 +33,7 @@ class Query(graphene.ObjectType):
 
 
 class AddMemeInput(graphene.InputObjectType):
-    caption = graphene.String()
+    caption = graphene.String(required=False)
     templateid = graphene.String(required=False)
 
 
@@ -43,6 +44,9 @@ class AddMemeMutation(graphene.Mutation):
     meme = graphene.Field(MemeType)
 
     def mutate(self, info, meme):
+        print(f'meme to add: {meme}')
+        print(f'caption {meme.caption} templetid {meme.templateid}')
+        logging.info(f'caption {meme.caption} templetid {meme.templateid}')
         new_meme = Meme.objects.create(
             caption=meme.caption,
             templateid=meme.templateid,
