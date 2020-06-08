@@ -37,8 +37,8 @@
       </form>
 
       <div class="md-layout-item md-size-50">
-            <md-button class="md-raised md-accent">Generate meme using AI</md-button>
-            <div v-if="loading">
+            <md-button @click="onGenerate" class="md-raised md-accent">Generate meme using AI</md-button>
+            <div v-if="loading_general">
               <md-progress-spinner class="md-accent" md-mode="indeterminate" />
             </div>
       </div>
@@ -46,9 +46,20 @@
 <div class="md-inset">
 </div>
     <div class="md-layout md-gutter md-alignment-top-space-around">
-      <md-card class="meme md-layout-item md-size-15" v-for="meme in allMemes.filter(meme=>meme.caption!=='')" :key="meme.id">
+      <md-card class="meme md-layout-item md-size-15" v-for="meme in allMemes.filter(meme=> (meme.caption != '' && meme.caption !== null) )" :key="meme.id">
         <md-card-media>
-          <img :src="meme.url" :alt="meme.caption+meme.templateid" />
+          <div v-if="loading_general">
+            <md-progress-spinner class="md-primary" md-mode="indeterminate" />
+          </div>
+          <div v-else>
+            <clazy-load :src="meme.url">
+              <img :src="meme.url">
+              <div class="preloader" slot="placeholder">
+                <md-progress-spinner class="md-primary" md-mode="indeterminate" />
+              </div>
+            </clazy-load>
+            <!-- <img :src="meme.url" :alt="meme.caption+' '+meme.templateid" /> -->
+          </div>
         </md-card-media>
 
         <md-card-content>
@@ -68,7 +79,7 @@ export default {
     async onClicked() {
       console.log(this.memeCaption);
       console.log(this.memeTemplate);
-      this.loading = true;
+      this.loading_general = true;
       const result = await this.$apollo.mutate({
         mutation: gql`
           mutation AddMeme($caption: String!, $templateid: String!) {
@@ -85,13 +96,55 @@ export default {
           caption: this.memeCaption
         }
       });
-      this.loading = false;
+      this.loading_general = false;
       console.log('result')
       console.log(result)
+    }, 
+    async onGenerate(){
+        this.loading = true;
+        this.loading_general = true;
+        const result = await this.$apollo.mutate({
+          mutation: gql`
+            mutation AddMeme($templateid: String!) {
+              addMeme(meme: { templateid: $templateid }) {
+                meme {
+                  id
+                }
+              }
+            }
+          `,
+          // Parameters
+          variables: {
+            templateid: 101716,
+          }
+        });
+        console.log('result')
+        console.log(result)
+        // function sleep(ms) {
+        //   return new Promise(resolve => setTimeout(resolve, ms));
+        // }
+        // await sleep(10000);
+        // this.loading = false;
+        // this.$apollo.queries.allMemes.refetch()
+
+        var that = this;
+        // setTimeout(function(){ 
+        //   that.$apollo.queries.allMemes.refetch();
+        //   that.loading = false;
+        //  }, 10000);
+
+        // repeat with the interval of 2 seconds
+        let timerId = setInterval(() => {
+          that.$apollo.queries.allMemes.refetch();
+          that.loading = !that.loading;
+        }, 1000);
+
+        // after 5 seconds stop
+        setTimeout(() => { clearInterval(timerId); that.loading=false; that.loading_general=false; }, 10000);
     }
   },
   data() {
-    return { memeCaption: "", memeTemplate: "", loading: false };
+    return { memeCaption: "", memeTemplate: "", loading: false, loading_general: false };
   },
   apollo: {
     allMemes: gql`
