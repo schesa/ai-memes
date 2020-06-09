@@ -120,7 +120,7 @@ export default {
           `,
           // Parameters
           variables: {
-            templateid: 61546,
+            templateid: this.memeTemplate,
           }
         });
         console.log('result')

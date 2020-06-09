@@ -238,17 +238,24 @@ class Loader():
             return False
 
     def get_meme_name(self, id):
-        return 'Yo Dawg Heard You'
-        # csv_filename = os.path.join(self.root_path, 'ImgFlip500K_Dataset', 'popular_100_memes.csv')
-        # print(csv_filename)
-        # print(id)
-        # with open(csv_filename) as csv_file:
-        #     reader = csv.reader(csv_file, delimiter=',')
-        #     line = 0
-        #     for row in reader:
-        #         line += 1
-        #         if line == 1:
-        #             print(f'HEADERS {row}')
-        #         else:
-        #             if row[0] == id:
-        #                 return row[1]
+        templates_path = os.path.join(self.root_path, 'ImgFlip500K_Dataset', 'templates')
+        json_files = [pos_json for pos_json in os.listdir(templates_path) if pos_json.endswith('.json')]
+        for json_file in json_files:
+            with open(json_file):
+                json = json.load(json_file)
+                if json["template_id"] == id:
+                    return json["title"]
+        # return 'Yo Dawg Heard You'
+        # # csv_filename = os.path.join(self.root_path, 'ImgFlip500K_Dataset', 'popular_100_memes.csv')
+        # # print(csv_filename)
+        # # print(id)
+        # # with open(csv_filename) as csv_file:
+        # #     reader = csv.reader(csv_file, delimiter=',')
+        # #     line = 0
+        # #     for row in reader:
+        # #         line += 1
+        # #         if line == 1:
+        # #             print(f'HEADERS {row}')
+        # #         else:
+        # #             if row[0] == id:
+        # #                 return row[1]
