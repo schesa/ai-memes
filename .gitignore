@@ -1,5 +1,5 @@
  # dataset
-net/data/*
+ # net/data/*
 # virtual environments
 */env/*
 # imgflip user and pass
