@@ -2,7 +2,7 @@
 
 Work In Progress...
 
-#Arhitecture
+# Arhitecture
 
 ![Arhitecture](https://github.com/schesa/ai-memes/blob/master/Web-Arhitecture-EN.png)
 
