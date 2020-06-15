@@ -8,7 +8,7 @@ Work In Progress...
 
 # ImgFlip API
 
-To run
+### To run
 ```sh
 $> cd ./api
 ```
@@ -20,9 +20,12 @@ Add your ImgFlip account info to .env file
 IMGFLIP_USERNAME=<your ImgFlip account>
 IMGFLIP_PASSWORD=<your ImgFlip password>
 ```
+Run the server
 ```sh
 $> npm start
 ```
+
+### Api examples
 
 Call examples found in /api/src/index.js
 
