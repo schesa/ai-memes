@@ -2,7 +2,11 @@
 
 Work In Progress...
 
-# Arhitecture
+[About](#About) | [Neural Network](#neural-network)
+
+# About
+
+## Arhitecture
 
 ![Arhitecture](https://github.com/schesa/ai-memes/blob/master/Web-Arhitecture-EN.png)
 
