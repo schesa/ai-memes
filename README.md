@@ -1,6 +1,8 @@
 # Ai memes
 
 Work In Progress...
+#Arhitecture
+![Arhitecture](https://github.com/schesa/ai-memes/blob/master/Web-Arhitecture-EN.png)
 
 # ImgFlip API
 
