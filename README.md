@@ -9,9 +9,12 @@ Work In Progress...
 # ImgFlip API
 
 To run
-> cd ./api
-
-> npm start
+```sh
+$> cd ./api
+```
+```sh
+$> npm start
+```
 
 Call examples found in /api/src/index.js
 
