@@ -2,7 +2,7 @@
 
 Work In Progress...
 
-[About](#About) | [Neural Network](#neural-network)
+[About](#About) | [Neural Network](#neural-network) | [ImgFlip API](#imgflip-api) | [GRPC Server](#grpc-server) | [backend](#backend) | [Frontend](#frontend)
 
 # About
 
