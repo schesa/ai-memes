@@ -6,6 +6,14 @@ Work In Progress...
 
 ![Arhitecture](https://github.com/schesa/ai-memes/blob/master/Web-Arhitecture-EN.png)
 
+# GRPC Server
+
+# Backend
+
+# Frontend
+
+# Neural Network
+
 # ImgFlip API
 
 ### To run
