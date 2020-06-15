@@ -13,6 +13,14 @@ To run
 $> cd ./api
 ```
 ```sh
+$> touch .env
+```
+Add your ImgFlip account info
+```
+IMGFLIP_USERNAME=<your ImgFlip account>
+IMGFLIP_PASSWORD=<your ImgFlip password>
+```
+```sh
 $> npm start
 ```
 
