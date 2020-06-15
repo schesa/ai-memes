@@ -15,7 +15,7 @@ $> cd ./api
 ```sh
 $> touch .env
 ```
-Add your ImgFlip account info
+Add your ImgFlip account info to .env file
 ```
 IMGFLIP_USERNAME=<your ImgFlip account>
 IMGFLIP_PASSWORD=<your ImgFlip password>
