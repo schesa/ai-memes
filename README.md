@@ -6,6 +6,8 @@ Work In Progress...
 
 # About
 
+Used ![ImgFlip575K_Dataset](https://github.com/schesa/ImgFlip575K_Dataset)
+
 ## Arhitecture
 
 ![Arhitecture](https://github.com/schesa/ai-memes/blob/master/Web-Arhitecture-EN.png)
