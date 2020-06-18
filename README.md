@@ -6,7 +6,7 @@ Work In Progress...
 
 # About
 
-Used [ImgFlip575K_Dataset](https://github.com/schesa/ImgFlip575K_Dataset)
+Generating artificial memes using **[ImgFlip575K_Dataset](https://github.com/schesa/ImgFlip575K_Dataset)**.
 
 ## Arhitecture
 
