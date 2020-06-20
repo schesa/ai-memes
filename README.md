@@ -6,7 +6,9 @@ Work In Progress...
 
 # About
 
-Generating artificial memes using **[ImgFlip575K_Dataset](https://github.com/schesa/ImgFlip575K_Dataset)**.
+Generating memes using Neural Networks
+
+Dataset used: **[ImgFlip575K_Dataset](https://github.com/schesa/ImgFlip575K_Dataset)**
 
 ## Arhitecture
 
