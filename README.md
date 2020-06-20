@@ -2,7 +2,7 @@
 
 Work In Progress...
 
-[About](#About) | [Neural Network](#neural-network) | [ImgFlip API](#imgflip-api) | [GRPC Server](#grpc-server) | [Backend](#backend) | [Frontend](#frontend)
+[About](#About) | [Web Arhitecture](#web-arhitecture) | [Neural Network](#neural-network) | [ImgFlip API](#imgflip-api) | [GRPC Server](#grpc-server) | [Backend](#backend) | [Frontend](#frontend)
 
 # About
 
@@ -10,19 +10,20 @@ Generating memes using Neural Networks
 
 Dataset used: **[ImgFlip575K_Dataset](https://github.com/schesa/ImgFlip575K_Dataset)**
 
-## Arhitecture
+# Neural Network
+
+# Web Arhitecture
 
 ![Arhitecture](https://github.com/schesa/ai-memes/blob/master/Web-Arhitecture-EN.png)
 
-# GRPC Server
 
-# Backend
+## GRPC Server
 
-# Frontend
+## Backend
 
-# Neural Network
+## Frontend
 
-# ImgFlip API
+## ImgFlip API
 
 ### To run
 ```sh
