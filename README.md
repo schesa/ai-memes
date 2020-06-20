@@ -2,7 +2,7 @@
 
 Work In Progress...
 
-[About](#About) | [Web Arhitecture](#web-arhitecture) | [Neural Network](#neural-network) | [ImgFlip API](#imgflip-api) | [GRPC Server](#grpc-server) | [Backend](#backend) | [Frontend](#frontend)
+[About](#About) | [Web Arhitecture](#web-arhitecture) | [Neural Network](#neural-network) | [ImgFlip API](#imgflip-api) | [GRPC Server](#grpc-server) | [Backend](#backend) | [Frontend](#frontend) | [References](#references)
 
 # About
 
@@ -11,6 +11,8 @@ Generating memes using Neural Networks
 Dataset used: **[ImgFlip575K_Dataset](https://github.com/schesa/ImgFlip575K_Dataset)**
 
 # Neural Network
+
+Used Show and Tell Model[[1]](#1).
 
 # Web Arhitecture
 
@@ -49,4 +51,11 @@ Call examples found in /api/src/index.js
 ex1. https://i.imgflip.com/3vh5hr.jpg
 
 ex2. https://i.imgflip.com/3vh5hs.jpg
+
+## References
+
+<a id="1">[1]</a> 
+Dijkstra, E. W. (1968). 
+Go to statement considered harmful. 
+Communications of the ACM, 11(3), 147-148.
 
