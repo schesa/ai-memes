@@ -12,7 +12,7 @@ Dataset used: **[ImgFlip575K_Dataset](https://github.com/schesa/ImgFlip575K_Data
 
 # Neural Network
 
-Used Show and Tell Model[[1]](#1).
+Used Show and Tell Model[[1]](#1)[[2]](#2).
 
 # Web Arhitecture
 
@@ -55,7 +55,13 @@ ex2. https://i.imgflip.com/3vh5hs.jpg
 ## References
 
 <a id="1">[1]</a> 
-Dijkstra, E. W. (1968). 
-Go to statement considered harmful. 
-Communications of the ACM, 11(3), 147-148.
+Oriol Vinyals, Alexander Toshev, Samy Bengio, & Dumitru Erhan.
+(2014).
+Show and Tell: A Neural Image Caption Generator.
+
+<a id="2">[2]</a> 
+Jeff Heaton. 
+Washington University (in St. Louis) Course T81-558: Applications
+of Deep Neural Networks Module 10: Time Series in Keras.
+https://github.com/jeffheaton/t81_558_deep_learning
 
