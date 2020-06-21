@@ -14,6 +14,18 @@ Dataset used: **[ImgFlip575K_Dataset](https://github.com/schesa/ImgFlip575K_Data
 
 Used Show and Tell Model[[1]](#1)[[2]](#2).
 
+## Training
+
+* Colab
+Managed to train for a small number of memes(10) on Windows using 
+* Windows 10
+
+Managed to train for a small number of memes(10)
+
+Used GPU Nvidia GeForce 950M
+
+CUDA 9.0
+
 # Web Arhitecture
 
 ![Arhitecture](https://github.com/schesa/ai-memes/blob/master/Web-Arhitecture-EN.png)
