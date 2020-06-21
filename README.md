@@ -17,10 +17,14 @@ Used Show and Tell Model[[1]](#1)[[2]](#2).
 ## Training
 
 ### Colab
-* Managed to train for a small number of memes(10) on Windows using 
+
+* Trained for all memes
+* 50 epochs, batch size 32
+* GPUs: Tesla K80 ..etc
+
 ### Windows 10
 
-* Managed to train for a small number of memes - 10
+* Managed to train for a small number of memes(10).
 
 * Used GPU NVIDIA GeForce GTX 950M with : python 3.6.8, CUDA 9.0, CuDNN 7.3.1, TF-GPU 1.12.
 
