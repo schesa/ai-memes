@@ -22,7 +22,7 @@ Managed to train for a small number of memes(10) on Windows using
 
 Managed to train for a small number of memes(10)
 
-Used GPU Nvidia GeForce 950M with :on 3.6.8, CUDA 9.0, CuDNN 7.3.1, TF-GPU 1.12
+Used GPU NVIDIA GeForce GTX 950M with : python 3.6.8, CUDA 9.0, CuDNN 7.3.1, TF-GPU 1.12
 
 # Web Arhitecture
 
