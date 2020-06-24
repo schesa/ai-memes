@@ -12,6 +12,8 @@ Dataset used: **[ImgFlip575K_Dataset](https://github.com/schesa/ImgFlip575K_Data
 
 # Neural Network
 
+Code - net/ai-memes.ipynb or on [Colab](https://colab.research.google.com/drive/1LnE0DmonhHVZ9RsGKUpO7NW0eDdON8sl?usp=sharing)
+
 Used Show and Tell Model[[1]](#1)[[2]](#2).
 
 ## Training
