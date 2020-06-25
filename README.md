@@ -2,7 +2,7 @@
 
 Work In Progress...
 
-[About](#About) | [Web Arhitecture](#web-arhitecture) | [Neural Network](#neural-network) | [ImgFlip API](#imgflip-api) | [GRPC Server](#grpc-server) | [Backend](#backend) | [Frontend](#frontend) | [References](#references)
+[About](#About) | [Web Arhitecture](#web-arhitecture) | [Neural Network](#neural-network) | [ImgFlip API](#imgflip-api) | [GRPC Server](#grpc-server) | [Backend](#backend) | [Frontend](#frontend) | [Examples](#examples) | [References](#references)
 
 # About
 
@@ -70,7 +70,14 @@ ex1. https://i.imgflip.com/3vh5hr.jpg
 
 ex2. https://i.imgflip.com/3vh5hs.jpg
 
-## References
+# Examples
+
+![ex1](https://raw.githubusercontent.com/schesa/ai-memes/master/net/classes/aquarium.jpg)
+
+![ex2](https://raw.githubusercontent.com/schesa/ai-memes/master/net/classes/iphone-meme.jpg)
+
+
+# References
 
 <a id="1">[1]</a> 
 Oriol Vinyals, Alexander Toshev, Samy Bengio, & Dumitru Erhan.
