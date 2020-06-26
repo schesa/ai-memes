@@ -43,6 +43,10 @@ Used Show and Tell Model[[1]](#1)[[2]](#2).
 
 ## Frontend
 
+Developed in Vue.js using cool lottie animations
+
+Uses GraphQL to get and create memes from backend 
+
 ## ImgFlip API
 
 ### To run
