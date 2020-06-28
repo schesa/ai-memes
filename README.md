@@ -24,13 +24,15 @@ Used Show and Tell Model[[1]](#1)[[2]](#2).
 
 * Trained for all memes
 * 50 epochs, batch size 32
-* GPUs: Tesla K80 ..etc
+* GPUs: Tesla K80 / Tesla P100-PCIE-16GB
 
 ### Windows 10
 
 * Managed to train for a small number of memes(10).
 
-* Used GPU NVIDIA GeForce GTX 950M with : python 3.6.8, CUDA 9.0, CuDNN 7.3.1, TF-GPU 1.12.
+* Used GPU NVIDIA GeForce GTX 950M with CUDA 9.0, CuDNN 7.3.1 installed
+
+* Anaconda environment with: python 3.6.8, TF-GPU 1.12 installed as in [here](https://medium.com/@adas7232/setup-tensor-flow-and-keras-with-gpu-support-on-windows-pc-2a13f5f15f9f).
 
 # Web Arhitecture
 
