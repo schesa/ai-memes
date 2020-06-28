@@ -41,7 +41,17 @@ Used Show and Tell Model[[1]](#1)[[2]](#2).
 
 ## GRPC Server
 
+Connected to django SQLite db
+
+Uses the neural network to generate captions
+
+Is a Grpc server and sends request to Grpc client(Api) to get link with the captioned img
+
 ## Backend
+
+Django and Graphene
+
+Used default SQLite db
 
 ## Frontend
 
