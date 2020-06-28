@@ -45,7 +45,7 @@ Connected to django SQLite db
 
 Uses the neural network to generate captions
 
-Is a Grpc server and sends request to Grpc client([ImgFlip API](#imgflip-api)) to get link with the captioned img
+Is a Grpc server and sends request to Grpc client ( [ImgFlip API](#imgflip-api) ) to get link with the captioned img
 
 ## Backend
 
