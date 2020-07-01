@@ -1,6 +1,5 @@
 # Ai memes
 
-Work In Progress...
 
 [About](#About) | [Web Arhitecture](#web-arhitecture) | [Neural Network](#neural-network) | [ImgFlip API](#imgflip-api) | [GRPC Server](#grpc-server) | [Backend](#backend) | [Frontend](#frontend) | [Examples](#examples) | [References](#references)
 
