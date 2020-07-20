@@ -15,7 +15,7 @@
     "async": "^1.5.2",
     "google-protobuf": "^3.0.0",
     "grpc": "^1.11.0",
-    "lodash": "^4.6.1",
+    "lodash": "^4.17.19",
     "minimist": "^1.2.0"
   },
   "devDependencies": {
