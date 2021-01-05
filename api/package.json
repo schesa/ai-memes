@@ -10,7 +10,7 @@
   "author": "schesa",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "@grpc/proto-loader": "^0.1.0",
     "async": "^1.5.2",
     "google-protobuf": "^3.0.0",
